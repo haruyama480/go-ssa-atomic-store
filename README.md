@@ -106,7 +106,7 @@ GOSSAFUNC=AtomicEmpty go build main.go
 
 各関数のSSAを出力し、比較してみました。
 
-```json
+```
 // Empty
 MOVD $0, R0
 JMP 6
