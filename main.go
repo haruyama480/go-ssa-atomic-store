@@ -13,7 +13,6 @@ func AtomicStoreInt32Add() (v int32) {
 	}
 	return
 }
-
 func AtomicStoreInt32Inc() (v int32) {
 	for i := 0; i < N; i++ {
 		atomic.StoreInt32(&v, v+1)
@@ -26,6 +25,12 @@ func AtomicEmpty() (v int32) {
 	return
 }
 
+func AtomicStoreInt32() (v int32) {
+	for i := 0; i < N; i++ {
+		atomic.StoreInt32(&v, 1)
+	}
+	return
+}
 func AtomicLoadInt32(v int32) {
 	for i := 0; i < N; i++ {
 		_ = atomic.LoadInt32(&v)
@@ -42,6 +47,7 @@ func main() {
 	var v int32 = 0
 	v += AtomicStoreInt32Add()
 	v += AtomicStoreInt32Inc()
+	v += AtomicStoreInt32()
 	AtomicLoadInt32(v)
 	AtomicStoreLoadInt32(v)
 	fmt.Println(v)
