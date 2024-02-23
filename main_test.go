@@ -44,3 +44,11 @@ func BenchmarkAtomicStoreLoadInt32(b *testing.B) {
 		_ = atomic.LoadInt32(&v)
 	}
 }
+
+func BenchmarkAtomicStoreInt32Fixed(b *testing.B) {
+	v := make([]int32, b.N)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		atomic.StoreInt32(&v[i], 1)
+	}
+}
